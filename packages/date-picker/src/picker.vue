@@ -104,13 +104,14 @@ const NewPopper = {
   data() {
     return merge({ visibleArrow: true }, Popper.data);
   },
+  watch: {
+    align(val) {
+      console.log(val);
+    }
+  },
   computed: {
     // fix: 21941 Fix the `placement` change error, which makes the component unusable `bug`
     placement() {
-      if (this.align) {
-        return PLACEMENT_MAP[this.align];
-      }
-
       return PLACEMENT_MAP[this.align] || PLACEMENT_MAP.left;
     }
   },
@@ -589,6 +590,8 @@ export default {
       boundariesPadding: 0,
       gpuAcceleration: false
     };
+    // eslint-disable-next-line no-debugger
+    debugger;
 
     this.$on('fieldReset', this.handleFieldReset);
   },
